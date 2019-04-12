@@ -5,7 +5,9 @@ import { EventTargetInterruptOptions, EventTargetInterruptSource } from './event
  */
 export class DocumentInterruptSource extends EventTargetInterruptSource {
   constructor(events: string, options?: number | EventTargetInterruptOptions) {
-    super(document.documentElement, events, options);
+    if (typeof document !== 'undefined') {
+      super(document.documentElement, events, options);
+    }
   }
 
   /*
